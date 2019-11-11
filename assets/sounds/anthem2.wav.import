@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/anthem2.wav-f2490d3ab73b7ab459523ad1f0fb0374.sample"
+
+[deps]
+
+source_file="res://assets/sounds/anthem2.wav"
+dest_files=[ "res://.import/anthem2.wav-f2490d3ab73b7ab459523ad1f0fb0374.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tune2.wav-f2c01deef9245aea62a4a182e53e805c.sample"
+
+[deps]
+
+source_file="res://assets/sounds/tune2.wav"
+dest_files=[ "res://.import/tune2.wav-f2c01deef9245aea62a4a182e53e805c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

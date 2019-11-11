@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Intro2.gd" type="Script" id=1]
+[ext_resource path="res://assets/OstrichSans-Heavy.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/OstrichSans-Medium.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 23
+extra_spacing_char = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 3 )
+
+[node name="Intro" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -20.0
+margin_top = -30.0
+margin_right = 1035.0
+margin_bottom = 710.0
+color = Color( 0, 0.54902, 0.764706, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 15.0
+margin_top = 40.0
+margin_right = 1040.0
+margin_bottom = 590.0
+custom_fonts/font = SubResource( 1 )
+text = "GREETINGS, CADET...
+
+As you now know, we are currently at war with the Galactic Armada...
+
+The time for action is NOW, and YOU are our final hope.
+We must set into motion OPERATION: BREAKOUT.
+
+You will travel to Sector Y, just outside of the oncoming Galactic Armada.
+Then, you will use our secret weapon: PROJECT: BALL.
+You will be aboard the newest ship we have: The P4D-D13 (known in R&D as The Hopebringer)
+What she lacks in aerodynamics she more than makes up for with her true purpose:
+To bounce Project: Ball at oncoming Galactic Armada.
+
+Once you reach Sector Y, you will have to break through the Galactic Armada's Prismatic Sheild.
+Next, you must make it through a fleet of their ships, all while keeping Project; Ball with you.
+Finally, you will have to take on the mothership herself. The mothership has been impervious to our attacks...
+
+UNTIL NOW! With Project: Ball, you can damage the front of the mothership (but for some reason, not the back...)
+
+
+It is up to you to save Earth. Give them what for.
+
+We're all counting on you,
+
+General M. A. Hemm
+Last American Spaceforce
+02.30.2119
+
+"
+
+[node name="Label2" type="Label" parent="."]
+margin_top = 475.0
+margin_right = 1020.0
+margin_bottom = 520.0
+custom_fonts/font = SubResource( 2 )
+text = " - CLICK TO BEGIN YOUR MISSION - "
+align = 1

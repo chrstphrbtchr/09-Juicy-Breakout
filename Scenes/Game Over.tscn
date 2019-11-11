@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/Game Over.gd" type="Script" id=1]
+[ext_resource path="res://assets/OstrichSansInline-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/OstrichSans-Medium.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/sounds/death.wav" type="AudioStream" id=4]
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 600, 20, 1 )
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, -100, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.8, 0.897143 )
+colors = PoolColorArray( 0.351563, 0, 0, 1, 0.958698, 0.851156, 0.391347, 1, 1, 0.909058, 0.417969, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=4]
+min_value = -1.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 600, 1, 1 )
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, -60, 1 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 201.3
+scale = 11.75
+color_ramp = SubResource( 8 )
+hue_variation_curve = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 88
+outline_color = Color( 0.160784, 0.615686, 0.913725, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 33
+outline_color = Color( 0, 0.929412, 1, 1 )
+extra_spacing_char = 7
+font_data = ExtResource( 3 )
+
+[node name="Game Over" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Message" type="Node2D" parent="."]
+
+[node name="Label3" type="Label" parent="Message"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="ColorRect" type="ColorRect" parent="Message"]
+margin_left = -20.0
+margin_top = -10.0
+margin_right = 1075.0
+margin_bottom = 630.0
+color = Color( 0.0392157, 0.00784314, 0.00784314, 1 )
+
+[node name="Particles2D" type="Particles2D" parent="Message"]
+position = Vector2( 550, 620 )
+scale = Vector2( 2, 1 )
+amount = 666
+lifetime = 13.1
+preprocess = 3.0
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource( 3 )
+
+[node name="Particles2D2" type="Particles2D" parent="Message"]
+position = Vector2( 550, 605 )
+amount = 100
+lifetime = 6.0
+randomness = 1.0
+process_material = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Message"]
+margin_top = 100.0
+margin_right = 1030.0
+margin_bottom = 460.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.737255, 0.223529, 0.972549, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0.337255, 0.337255, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "THE GALACTIC ARMADA
+HAS WON..."
+align = 1
+
+[node name="Label2" type="Label" parent="Message"]
+margin_top = 410.0
+margin_right = 1030.0
+margin_bottom = 433.0
+custom_fonts/font = SubResource( 2 )
+text = "CLICK TO BEGIN AGAIN"
+align = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
+autoplay = true
