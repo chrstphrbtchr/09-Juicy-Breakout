@@ -2,7 +2,8 @@ extends Node2D
 
 signal lives ### Fix these before finalizing!
 signal score # Signal up, call down ### FIX!
-
+export var score = 999999
+export var lives = 3
 
 func _ready():
 	var WorldNode = get_node("/root/World") 
@@ -10,12 +11,7 @@ func _ready():
 	connect("lives", WorldNode, "decrease_lives")
 	
 	
-func increase_score(s): # define new function, parameter s
-	score += int(s) # increase score
-	find_node("Score").update_score() # we'll define this soon
-	if score >= 2100:
-		get_tree().change_scene("res://Scenes/Hooray.tscn")
-	
+
 	
 func decrease_lives():
 	lives -= 1

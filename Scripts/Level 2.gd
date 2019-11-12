@@ -6,7 +6,7 @@ export var lives = 3
 func increase_score(s): # define new function, parameter s
 	score += int(s) # increase score
 	find_node("Score").update_score() # we'll define this soon
-	if score >= 210000: ## 2100
+	if score >= 9300:
 		get_tree().change_scene("res://Scenes/Boss Battle.tscn") 
 
 	

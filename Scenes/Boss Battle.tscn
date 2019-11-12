@@ -1,26 +1,89 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scripts/Level 2.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Paddle.gd" type="Script" id=2]
-[ext_resource path="res://assets/ship01.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/OstrichSans-Heavy.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://Scripts/Score.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/Lives.gd" type="Script" id=7]
-[ext_resource path="res://assets/sounds/boss_song_001.wav" type="AudioStream" id=8]
-[ext_resource path="res://assets/bossShip.png" type="Texture" id=9]
+[ext_resource path="res://assets/erf.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Paddle.gd" type="Script" id=3]
+[ext_resource path="res://assets/ship01.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/OstrichSans-Heavy.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Lives.gd" type="Script" id=8]
+[ext_resource path="res://assets/sounds/boss_song_001.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/bossShip.png" type="Texture" id=10]
+[ext_resource path="res://assets/sounds/eye.wav" type="AudioStream" id=11]
 
 [sub_resource type="ParticlesMaterial" id=5]
-trail_divisor = 2
 emission_shape = 2
-emission_box_extents = Vector3( 600, 1, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, 200, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
+emission_box_extents = Vector3( 600, 600, 1 )
+spread = 100.0
+gravity = Vector3( 0, 0, 0 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 47.7704, 9.12964 )
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0, 0.153285, 0.781022, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.968627, 0.682353, 0, 0.847059, 0.589844, 0, 0, 0.684028, 0.890196, 0, 0, 0.537255 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="Curve" id=16]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.982715, 0.0776 ), -0.395856, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 16 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 18, 1 )
+flag_disable_z = true
+spread = 3.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 45.0
+scale = 20.0
+scale_curve = SubResource( 17 )
+color_ramp = SubResource( 15 )
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0, 0.308571, 0.748571, 0.96 )
+colors = PoolColorArray( 0.964844, 0.964844, 0.964844, 1, 1, 0.609375, 0, 1, 0.796791, 0.035253, 0, 0.708119, 0.460938, 0, 0, 0.690196 )
+
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
+
+[sub_resource type="Curve" id=21]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.989262, 0.0424 ), -0.488199, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=22]
+curve = SubResource( 21 )
+
+[sub_resource type="ParticlesMaterial" id=23]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 10, 1 )
+flag_disable_z = true
+spread = 3.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 45.0
+scale = 18.0
+scale_curve = SubResource( 22 )
+color_ramp = SubResource( 20 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 34.1833, 36.9695 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+points = PoolVector2Array( 0, -200, 177, 5, -177, 5 )
 
 [sub_resource type="PhysicsMaterial" id=2]
 friction = 0.0
@@ -28,11 +91,14 @@ bounce = 1.0
 
 [sub_resource type="DynamicFont" id=3]
 size = 22
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 22
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 23.6972, 20.7938 )
 
 [node name="Boss Battle" type="Node"]
 script = ExtResource( 1 )
@@ -45,18 +111,28 @@ margin_bottom = 610.0
 color = Color( 0.152941, 0.0980392, 0.0980392, 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( 545.148, -205 )
-scale = Vector2( 1, 100 )
-amount = 300
-lifetime = 8.6
+position = Vector2( 517.389, 276.161 )
+scale = Vector2( 1, 2 )
+emitting = false
+amount = 200
+lifetime = 600.0
+one_shot = true
+preprocess = 600.0
+randomness = 1.0
 process_material = SubResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+[node name="erf" type="Sprite" parent="Sprite2"]
+position = Vector2( 903.862, 486.811 )
+texture = ExtResource( 2 )
 
 [node name="Paddle" type="KinematicBody2D" parent="."]
 position = Vector2( 543.265, 557.623 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Paddle"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
 position = Vector2( 6.10352e-005, 2.94043 )
@@ -70,7 +146,53 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
 polygon = PoolVector2Array( 0, 0, -1, 665, -80, 677, -87, -52, 1098, -35, 1100, 665, 1031, 666, 1027, 609, 1026, 0 )
 
-[node name="Ball" parent="." instance=ExtResource( 4 )]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Fire 1" type="Particles2D" parent="StaticBody2D"]
+position = Vector2( 482.351, 360.373 )
+rotation = 1.5708
+amount = 200
+lifetime = 2.0
+speed_scale = 2.3
+randomness = 1.0
+process_material = SubResource( 18 )
+
+[node name="Fire 2" type="Particles2D" parent="StaticBody2D"]
+position = Vector2( 605.993, 366.885 )
+rotation = 1.5708
+amount = 200
+lifetime = 2.0
+speed_scale = 2.3
+randomness = 1.0
+process_material = SubResource( 18 )
+
+[node name="Fire 3" type="Particles2D" parent="StaticBody2D"]
+position = Vector2( 405.391, 323.769 )
+rotation = 1.5708
+amount = 200
+lifetime = 2.0
+speed_scale = 2.1
+randomness = 1.0
+process_material = SubResource( 23 )
+
+[node name="Fire 4" type="Particles2D" parent="StaticBody2D"]
+position = Vector2( 686.989, 327.85 )
+rotation = 1.5708
+amount = 200
+lifetime = 2.0
+speed_scale = 2.1
+randomness = 1.0
+process_material = SubResource( 23 )
+
+[node name="No Hit" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 543.173, 296.946 )
+shape = SubResource( 11 )
+
+[node name="No Hit 2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 544.75, 297.948 )
+shape = SubResource( 13 )
+
+[node name="Ball" parent="." instance=ExtResource( 5 )]
 position = Vector2( 540.139, 537.06 )
 physics_material_override = SubResource( 2 )
 
@@ -83,7 +205,7 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.956863, 0.913725, 0.262745, 1 )
 custom_colors/font_outline_modulate = Color( 0.890196, 0.345098, 0.968627, 1 )
 text = "SCORE: "
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -98,15 +220,52 @@ custom_colors/font_color = Color( 1, 0.658824, 0.658824, 1 )
 custom_colors/font_outline_modulate = Color( 0.298039, 0.639216, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "LIVES: "
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="Song" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 autoplay = true
 
-[node name="Node" type="Node" parent="."]
+[node name="Ship" type="Node" parent="." groups=[
+"Boss",
+]]
 
-[node name="Sprite" type="Sprite" parent="Node"]
+[node name="Boss" type="StaticBody2D" parent="Ship" groups=[
+"Boss",
+]]
+position = Vector2( -8.99988, -3.01324 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ship/Boss"]
 position = Vector2( 560, 265 )
 scale = Vector2( 1.61607, 1.45982 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
+
+[node name="Hit" type="CollisionShape2D" parent="Ship/Boss" groups=[
+"Boss1",
+]]
+position = Vector2( 492.136, 339.272 )
+shape = SubResource( 11 )
+
+[node name="Hit 2" type="CollisionShape2D" parent="Ship/Boss" groups=[
+"Boss2",
+]]
+position = Vector2( 616.718, 340.704 )
+shape = SubResource( 11 )
+
+[node name="Hit 3" type="CollisionShape2D" parent="Ship/Boss" groups=[
+"Boss3",
+]]
+position = Vector2( 413.142, 325.791 )
+shape = SubResource( 12 )
+
+[node name="Hit 4" type="CollisionShape2D" parent="Ship/Boss" groups=[
+"Boss4",
+]]
+position = Vector2( 695.27, 325.093 )
+shape = SubResource( 12 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Ship/Boss"]
+stream = ExtResource( 11 )

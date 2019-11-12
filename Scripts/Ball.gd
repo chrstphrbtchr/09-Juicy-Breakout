@@ -4,6 +4,9 @@ signal lives
 signal score # Signal up, call down
 signal sound
 
+var ows = 0
+
+
 func _ready():
 	contact_monitor = true
 	set_max_contacts_reported(4)
@@ -29,6 +32,16 @@ func _physics_process(delta):
 			self.add_child(player)
 			player.stream = load("res://assets/sounds/c2.wav")
 			player.play()
+			
+		if body.is_in_group("Boss"):
+			ows = ows + 1
+			var player = AudioStreamPlayer.new()
+			self.add_child(player)
+			player.stream = load("res://assets/sounds/eye.wav")
+			player.play()
+			print("THIS WORKS") ###
+		
+			
 		else:
 			var player = AudioStreamPlayer.new()
 			self.add_child(player)
@@ -39,3 +52,9 @@ func _physics_process(delta):
 		emit_signal("lives") # Tell the world node to decrease the amount of lives that I have
 		queue_free()
 		print("Died")
+		
+### ENDING OF THE GAME ###
+	if ows > 9:
+		get_tree().change_scene("res://Scenes/Hooray.tscn")
+	else:
+		pass
