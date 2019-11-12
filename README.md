@@ -32,3 +32,4 @@ FUTURE PATCHES:
 	1", etc.)
 - Fix fireworks
 - Parallax?
+- Enemy fire
